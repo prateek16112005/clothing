@@ -1,0 +1,127 @@
+.shop {
+  padding-top: 96px;
+  min-height: 100svh;
+}
+
+.shop-header {
+  border-bottom: 1px solid var(--border);
+  padding: 48px 0 32px;
+}
+
+.shop-header-inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.shop-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8vw, 96px);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-top: 8px;
+}
+
+.shop-count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--gray);
+  padding-bottom: 12px;
+}
+
+.shop-body {
+  padding-top: 32px;
+  padding-bottom: 80px;
+}
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.filter-cats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  color: var(--gray);
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.filter-btn.active {
+  border-color: var(--acid);
+  color: var(--acid);
+  background: rgba(200, 255, 0, 0.05);
+}
+
+.filter-sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sort-select {
+  background: var(--muted);
+  color: var(--white);
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.sort-select:hover {
+  border-color: var(--acid);
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 24px;
+  border: 1px dashed var(--border);
+}
+
+.empty-state p {
+  color: var(--gray);
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .shop-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
