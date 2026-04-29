@@ -1,24 +1,31 @@
 /* ========================
-   MIL JAYEGA — Global CSS
+   MIL JAYEGA — Global CSS (UPDATED)
    ======================== */
 
 :root {
   --black: #0a0a0a;
-  --white: #f5f0e8;
-  --cream: #f0e8d8;
-  --acid: #c8ff00;
-  --orange: #ff4d1c;
+  --white: #f7f3ec;
+  --cream: #f5ebda;
+
+  /* brighter + modern accent upgrade */
+  --acid: #b6ff2e;   /* softer neon green (less harsh) */
+  --orange: #ff5a2a;
+
   --muted: #2a2a2a;
-  --gray: #888;
-  --border: #2a2a2a;
+  --gray: #9a9a9a;
+  --border: #333;
 
   --font-display: 'Bebas Neue', sans-serif;
   --font-heading: 'Black Han Sans', sans-serif;
-  --font-mono: 'Space Mono', montserrat;
+  --font-mono: 'Space Mono', monospace;
   --font-body: 'DM Sans', sans-serif;
 
   --nav-h: 64px;
 }
+
+/* ========================
+   RESET
+   ======================== */
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -36,11 +43,38 @@ body {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
+
   overflow-x: hidden;
-  cursor: none;
+
+  /* ⚡ IMPORTANT FIX FOR MOBILE CURSOR ISSUES */
+  cursor: auto;
 }
 
-/* Custom cursor */
+/* ========================
+   MOBILE RESPONSIVE FIX (GLOBAL)
+   ======================== */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Prevent horizontal scroll (very important for mobile) */
+body, html {
+  overflow-x: hidden;
+}
+
+/* ========================
+   CUSTOM CURSOR (DESKTOP ONLY)
+   ======================== */
+
 .cursor {
   position: fixed;
   width: 12px;
@@ -54,11 +88,29 @@ body {
   mix-blend-mode: difference;
 }
 
-.cursor.hovering {
-  width: 40px;
-  height: 40px;
-  background: var(--acid);
+/* disable cursor effect on mobile */
+@media (max-width: 768px) {
+  .cursor {
+    display: none;
+  }
+
+  body {
+    cursor: auto;
+  }
+
+  button {
+    cursor: pointer;
+  }
 }
+
+.cursor.hovering {
+  width: 36px;
+  height: 36px;
+}
+
+/* ========================
+   LINKS + BUTTONS
+   ======================== */
 
 a {
   color: inherit;
@@ -66,34 +118,31 @@ a {
 }
 
 button {
-  cursor: none;
   border: none;
   background: none;
   font-family: var(--font-body);
 }
 
-img {
-  max-width: 100%;
-  display: block;
+/* ========================
+   SCROLLBAR (BRIGHTER LOOK)
+   ======================== */
+
+::-webkit-scrollbar {
+  width: 5px;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
 ::-webkit-scrollbar-track {
   background: var(--black);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--acid);
+  border-radius: 10px;
 }
 
-/* Utility */
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
+/* ========================
+   TYPOGRAPHY HELPERS
+   ======================== */
 
 .tag {
   font-family: var(--font-mono);
@@ -103,13 +152,39 @@ img {
   color: var(--gray);
 }
 
-/* Page transitions */
+/* ========================
+   PAGE ANIMATION
+   ======================== */
+
 .page-enter {
   opacity: 0;
   transform: translateY(20px);
 }
+
 .page-enter-active {
   opacity: 1;
   transform: translateY(0);
   transition: all 0.4s ease;
+}
+
+/* ========================
+   MOBILE GLOBAL FIXES
+   ======================== */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
 }
