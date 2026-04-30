@@ -1,190 +1,136 @@
-/* ========================
-   MIL JAYEGA — Global CSS (UPDATED)
-   ======================== */
+/* ===========================
+   MIL JAYEGA — Premium Light
+   =========================== */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Black+Han+Sans&display=swap');
 
 :root {
-  --black: #0a0a0a;
-  --white: #f7f3ec;
-  --cream: #f5ebda;
+  /* Premium light palette */
+  --bg:        #FAFAF8;
+  --bg-alt:    #F3F1EC;
+  --bg-card:   #FFFFFF;
+  --surface:   #EDEBE5;
+  --border:    #E0DDD6;
+  --border-dark: #C8C4BA;
 
-  /* brighter + modern accent upgrade */
-  --acid: #b6ff2e;   /* softer neon green (less harsh) */
-  --orange: #ff5a2a;
+  --text:      #18181A;
+  --text-2:    #52524E;
+  --text-3:    #9A9890;
 
-  --muted: #2a2a2a;
-  --gray: #9a9a9a;
-  --border: #333;
+  --accent:    #B5D400;   /* lime-green — pops on white */
+  --accent-dk: #8AAF00;
+  --accent-bg: #F2F8D4;
+  --orange:    #E8430E;
+  --orange-bg: #FFF0EB;
+
+  --black:     #18181A;
+  --white:     #FAFAF8;
 
   --font-display: 'Bebas Neue', sans-serif;
-  --font-heading: 'Black Han Sans', sans-serif;
-  --font-mono: 'Space Mono', monospace;
-  --font-body: 'DM Sans', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+  --font-body:    'DM Sans', sans-serif;
 
-  --nav-h: 64px;
+  --radius:    4px;
+  --nav-h:     64px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.10);
 }
 
-/* ========================
-   RESET
-   ======================== */
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--black);
-  color: var(--white);
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
-
   overflow-x: hidden;
-
-  /* ⚡ IMPORTANT FIX FOR MOBILE CURSOR ISSUES */
-  cursor: auto;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ========================
-   MOBILE RESPONSIVE FIX (GLOBAL)
-   ======================== */
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* Prevent horizontal scroll (very important for mobile) */
-body, html {
-  overflow-x: hidden;
-}
-
-/* ========================
-   CUSTOM CURSOR (DESKTOP ONLY)
-   ======================== */
-
+/* Custom cursor */
 .cursor {
   position: fixed;
-  width: 12px;
-  height: 12px;
-  background: var(--acid);
+  width: 10px; height: 10px;
+  background: var(--black);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
-  mix-blend-mode: difference;
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+  mix-blend-mode: multiply;
 }
+.cursor.hovering { width: 32px; height: 32px; background: var(--accent); }
 
-/* disable cursor effect on mobile */
-@media (max-width: 768px) {
-  .cursor {
-    display: none;
-  }
+a { color: inherit; text-decoration: none; }
+button { cursor: none; border: none; background: none; font-family: var(--font-body); }
+img { max-width: 100%; display: block; }
 
-  body {
-    cursor: auto;
-  }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-  button {
-    cursor: pointer;
-  }
-}
-
-.cursor.hovering {
-  width: 36px;
-  height: 36px;
-}
-
-/* ========================
-   LINKS + BUTTONS
-   ======================== */
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  border: none;
-  background: none;
-  font-family: var(--font-body);
-}
-
-/* ========================
-   SCROLLBAR (BRIGHTER LOOK)
-   ======================== */
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--black);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--acid);
-  border-radius: 10px;
-}
-
-/* ========================
-   TYPOGRAPHY HELPERS
-   ======================== */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
 
 .tag {
   font-family: var(--font-mono);
   font-size: 10px;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gray);
+  color: var(--text-3);
 }
 
-/* ========================
-   PAGE ANIMATION
-   ======================== */
-
-.page-enter {
-  opacity: 0;
-  transform: translateY(20px);
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: var(--radius);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  background: var(--accent);
+  color: var(--black);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-.page-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.4s ease;
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--border-dark);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+.btn-outline:hover {
+  border-color: var(--black);
+  background: var(--black);
+  color: var(--white);
 }
 
-/* ========================
-   MOBILE GLOBAL FIXES
-   ======================== */
+@media (hover: none) and (pointer: coarse) {
+  body { cursor: auto; }
+  .cursor { display: none; }
+  button, a { cursor: pointer; }
+}
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 16px;
-  }
-
-  body {
-    font-size: 15px;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  h2 {
-    font-size: 1.4rem;
-  }
+  .container { padding: 0 20px; }
 }

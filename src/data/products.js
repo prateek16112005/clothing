@@ -1,7 +1,4 @@
-// ================================
-// MIL JAYEGA — Product Data
-// Replace image URLs with your actual product images
-// ================================
+import { IMAGES } from './images.js'
 
 export const products = [
   // T-SHIRTS
@@ -15,8 +12,8 @@ export const products = [
     color: "#1a1a1a",
     colorName: "Washed Black",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "https://placehold.co/500x600/1a1a1a/c8ff00?text=CHAOS+THEORY&font=bebas-neue",
-    imageBack: "https://placehold.co/500x600/1a1a1a/ffffff?text=BACK&font=bebas-neue",
+    image: IMAGES.tshirts.chaos_front,
+    imageBack: IMAGES.tshirts.chaos_back,
     description: "Oversized boxy fit. 100% cotton 240 GSM. Screen printed chaos graphic. Pre-shrunk & garment washed.",
     isNew: false,
     inStock: true,
@@ -31,8 +28,8 @@ export const products = [
     color: "#f5f0e8",
     colorName: "Off White",
     sizes: ["XS", "S", "M", "L", "XL"],
-    image: "https://placehold.co/500x600/f5f0e8/0a0a0a?text=MIL+JAYEGA+OG&font=bebas-neue",
-    imageBack: "https://placehold.co/500x600/f5f0e8/ff4d1c?text=BACK+GRAPHIC&font=bebas-neue",
+    image: IMAGES.tshirts.og_front,
+    imageBack: IMAGES.tshirts.og_back,
     description: "The original. Regular fit with dropped shoulders. 220 GSM combed cotton. Our signature chest logo.",
     isNew: true,
     inStock: true,
@@ -47,8 +44,8 @@ export const products = [
     color: "#c8ff00",
     colorName: "Acid Green",
     sizes: ["S", "M", "L", "XL"],
-    image: "https://placehold.co/500x600/c8ff00/0a0a0a?text=ACID+TRIP&font=bebas-neue",
-    imageBack: "https://placehold.co/500x600/c8ff00/ff4d1c?text=LIMITED+EDITION&font=bebas-neue",
+    image: IMAGES.tshirts.acid_front,
+    imageBack: IMAGES.tshirts.acid_back,
     description: "For those who stand out. Heavyweight 260 GSM. All-over distressed acid wash. Only 100 pieces made.",
     isNew: true,
     inStock: true,
@@ -63,8 +60,8 @@ export const products = [
     color: "#3d3d3d",
     colorName: "Charcoal",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "https://placehold.co/500x600/3d3d3d/f5f0e8?text=NO+SIGNAL&font=bebas-neue",
-    imageBack: "https://placehold.co/500x600/3d3d3d/c8ff00?text=STATIC&font=bebas-neue",
+    image: IMAGES.tshirts.nosignal_front,
+    imageBack: IMAGES.tshirts.chaos_back,
     description: "Offline. 100% cotton 230 GSM. Static graphic front. 'NO SIGNAL' text back. Regular oversized fit.",
     isNew: false,
     inStock: true,
@@ -79,8 +76,8 @@ export const products = [
     color: "#ff4d1c",
     colorName: "Brick Orange",
     sizes: ["S", "M", "L", "XL"],
-    image: "https://placehold.co/500x600/ff4d1c/f5f0e8?text=DELHI+BOY&font=bebas-neue",
-    imageBack: "https://placehold.co/500x600/ff4d1c/0a0a0a?text=दिल्ली&font=bebas-neue",
+    image: IMAGES.tshirts.delhi_front,
+    imageBack: IMAGES.tshirts.og_back,
     description: "Rep your city. Hindi script on back. 220 GSM. Regular fit. Made for Dilli streets.",
     isNew: true,
     inStock: true,
@@ -95,13 +92,12 @@ export const products = [
     color: "#f5f5dc",
     colorName: "Vintage White",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    image: "https://placehold.co/500x600/f5f5dc/888?text=GHOST&font=bebas-neue",
-    imageBack: "https://placehold.co/500x600/f5f5dc/0a0a0a?text=BOO&font=bebas-neue",
+    image: IMAGES.tshirts.ghost_front,
+    imageBack: IMAGES.tshirts.chaos_back,
     description: "Faded, washed, distressed. 240 GSM garment washed cotton. Intentionally aged look.",
     isNew: false,
     inStock: true,
   },
-
   // LOWERS
   {
     id: 7,
@@ -113,9 +109,9 @@ export const products = [
     color: "#4a4a3a",
     colorName: "Military Olive",
     sizes: ["28", "30", "32", "34", "36"],
-    image: "https://placehold.co/500x600/4a4a3a/c8ff00?text=MJ+CARGO&font=bebas-neue",
-    imageBack: "https://placehold.co/500x600/4a4a3a/f5f0e8?text=6+POCKETS&font=bebas-neue",
-    description: "6-pocket cargo. Relaxed tapered fit. Heavy-duty canvas 280 GSM. Adjustable ankle cuffs. Our most hyped lower.",
+    image: IMAGES.lowers.cargo_front,
+    imageBack: IMAGES.lowers.cargo_back,
+    description: "6-pocket cargo. Relaxed tapered fit. Heavy-duty canvas 280 GSM. Adjustable ankle cuffs.",
     isNew: false,
     inStock: true,
   },
@@ -129,8 +125,8 @@ export const products = [
     color: "#0a0a0a",
     colorName: "Jet Black",
     sizes: ["S", "M", "L", "XL", "XXL"],
-    image: "https://placehold.co/500x600/111/c8ff00?text=STATIC+TRACK&font=bebas-neue",
-    imageBack: "https://placehold.co/500x600/111/f5f0e8?text=SIDE+STRIPE&font=bebas-neue",
+    image: IMAGES.lowers.track_front,
+    imageBack: IMAGES.lowers.cargo_back,
     description: "Premium tricot fabric. Acid green side stripe. Zip ankles. Two side pockets + one back zip.",
     isNew: true,
     inStock: true,
@@ -145,8 +141,8 @@ export const products = [
     color: "#888888",
     colorName: "Ash Grey",
     sizes: ["S", "M", "L", "XL"],
-    image: "https://placehold.co/500x600/888/0a0a0a?text=CHILL+JOGGER&font=bebas-neue",
-    imageBack: "https://placehold.co/500x600/888/ff4d1c?text=MJ+BACK&font=bebas-neue",
+    image: IMAGES.lowers.jogger_front,
+    imageBack: IMAGES.lowers.cargo_back,
     description: "400 GSM fleece jogger. Relaxed fit. Deep pockets. Mil Jayega embroidery on left leg.",
     isNew: false,
     inStock: true,
@@ -161,35 +157,16 @@ export const products = [
     color: "#c8a96e",
     colorName: "Desert Tan",
     sizes: ["28", "30", "32", "34"],
-    image: "https://placehold.co/500x600/c8a96e/0a0a0a?text=PAISA+VASOOL&font=bebas-neue",
-    imageBack: "https://placehold.co/500x600/c8a96e/ff4d1c?text=SHORTS&font=bebas-neue",
+    image: IMAGES.lowers.shorts_front,
+    imageBack: IMAGES.lowers.cargo_back,
     description: "7-inch inseam cargo shorts. 4 pockets. 100% cotton ripstop. Perfect for summer heat.",
     isNew: false,
     inStock: true,
   },
-];
+]
 
 export const categories = [
   { id: "all", label: "All Drops" },
   { id: "tshirts", label: "T-Shirts" },
   { id: "lowers", label: "Lowers" },
-];
-
-export const heroSlides = [
-  {
-    headline: "MIL JAYEGA",
-    subline: "The fit will hit. Trust.",
-    cta: "Shop Now",
-    tag: "SS'25 DROP",
-    bg: "#0a0a0a",
-    accent: "#c8ff00",
-  },
-  {
-    headline: "NEW LOWERS",
-    subline: "Cargo season is here. Load up.",
-    cta: "Shop Lowers",
-    tag: "CARGO COLLECTION",
-    bg: "#0a0a0a",
-    accent: "#ff4d1c",
-  },
-];
+]

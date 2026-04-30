@@ -1,116 +1,42 @@
-.about {
-  padding-top: 96px;
-}
+.about { padding-top: 94px; background: var(--bg); }
 
-.about-hero {
-  padding: 80px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.about-headline {
-  font-family: var(--font-display);
-  font-size: clamp(80px, 15vw, 200px);
-  line-height: 0.9;
-  letter-spacing: -0.01em;
-  display: flex;
-  flex-direction: column;
-  margin-top: 16px;
-}
-
-.about-outline {
-  -webkit-text-stroke: 2px var(--acid);
-  color: transparent;
-}
-
-.about-body {
-  padding: 80px 24px;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-}
-
-.about-text-col h2 {
-  font-family: var(--font-display);
-  font-size: 40px;
-  letter-spacing: 0.02em;
-  margin-bottom: 24px;
-  line-height: 1.1;
-}
-
-.about-text-col p {
-  color: var(--gray);
-  font-size: 15px;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-.about-values {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
+.about-hero { padding: 64px 0; border-bottom: 1px solid var(--border); }
+.about-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.about-hero-img {
+  aspect-ratio: 4/3;
+  border-radius: var(--radius);
+  overflow: hidden;
   border: 1px solid var(--border);
-  align-self: start;
 }
+.about-hero-img img { width: 100%; height: 100%; object-fit: cover; }
 
-.value-card {
-  background: var(--black);
-  padding: 28px;
-  transition: background 0.2s ease;
-}
+.about-headline { font-family: var(--font-display); font-size: clamp(64px, 10vw, 140px); line-height: 0.9; letter-spacing: -0.01em; color: var(--black); display: flex; flex-direction: column; margin-top: 16px; }
+.about-outline { -webkit-text-stroke: 2px var(--black); color: transparent; }
 
-.value-card:hover {
-  background: var(--muted);
-}
+.about-body { padding: 72px 0; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+.about-text h2 { font-family: var(--font-display); font-size: clamp(32px, 4vw, 48px); letter-spacing: 0.02em; color: var(--black); margin-bottom: 20px; line-height: 1.05; }
+.about-text p { color: var(--text-2); font-size: 15px; line-height: 1.8; margin-bottom: 18px; }
 
-.value-num {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  color: var(--acid);
-  display: block;
-  margin-bottom: 12px;
-}
+.about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; align-self: start; }
+.value-card { background: var(--bg-card); padding: 24px; transition: background 0.2s ease; }
+.value-card:hover { background: var(--bg-alt); }
+.value-num { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; color: var(--accent-dk); display: block; margin-bottom: 10px; }
+.value-card h3 { font-family: var(--font-display); font-size: 20px; letter-spacing: 0.02em; color: var(--black); margin-bottom: 6px; }
+.value-card p { font-size: 12px; color: var(--text-2); line-height: 1.6; }
 
-.value-card h3 {
-  font-family: var(--font-display);
-  font-size: 22px;
-  letter-spacing: 0.02em;
-  margin-bottom: 8px;
-}
-
-.value-card p {
-  font-size: 12px;
-  color: var(--gray);
-  line-height: 1.6;
-}
-
-.about-manifesto {
-  background: var(--acid);
-  padding: 80px 24px;
-}
-
-.manifesto-inner {
-  display: flex;
-  justify-content: center;
-}
-
-.manifesto-inner blockquote {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 5vw, 64px);
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-  color: var(--black);
-  text-align: center;
-  max-width: 800px;
-}
+.about-manifesto { background: var(--black); padding: 72px 0; }
+.manifesto-inner blockquote { font-family: var(--font-display); font-size: clamp(28px, 5vw, 60px); letter-spacing: 0.02em; line-height: 1.2; color: var(--white); text-align: center; max-width: 760px; margin: 0 auto; }
+.manifesto-inner blockquote span { color: var(--accent); }
 
 @media (max-width: 900px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
+  .about-hero-inner { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 600px) {
+  .about-hero { padding: 40px 0; }
+  .about-headline { font-size: clamp(52px, 16vw, 90px); }
+  .about-body { padding: 48px 0; }
+  .about-values { grid-template-columns: 1fr; }
+  .manifesto-inner blockquote { font-size: clamp(24px, 8vw, 40px); }
 }

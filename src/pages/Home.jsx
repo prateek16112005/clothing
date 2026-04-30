@@ -2,179 +2,203 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { products } from '../data/products'
+import { IMAGES } from '../data/images'
 import './Home.css'
 
 const SLIDES = [
   {
-    headline: ["MIL", "JAYEGA"],
-    sub: "The fit will hit. Trust the drop.",
-    tag: "SS'25 COLLECTION",
+    tag: "SS'25 Collection",
+    headline: ["THE FIT", "IS HERE."],
+    sub: "Premium streetwear, desi roots. Mil jayega — always.",
     cta: "Shop Now",
     ctaLink: "/shop",
-    accent: "#c8ff00",
+    cta2: "Customize Your Tee",
+    cta2Link: "/customize",
+    img: IMAGES.hero.slide1,
   },
   {
-    headline: ["NEW", "CARGO"],
-    sub: "Load up. Cargo season is officially here.",
-    tag: "LOWERS DROP",
+    tag: "Cargo Drop",
+    headline: ["CARGO", "SEASON."],
+    sub: "Six pockets. Zero regrets. New lowers just dropped.",
     cta: "Shop Lowers",
     ctaLink: "/shop?cat=lowers",
-    accent: "#ff4d1c",
+    cta2: "See All Drops",
+    cta2Link: "/shop",
+    img: IMAGES.hero.slide2,
   },
 ]
 
 export default function Home({ onAddToCart }) {
   const [slide, setSlide] = useState(0)
-  const [animating, setAnimating] = useState(false)
+  const [fading, setFading] = useState(false)
 
-  // Featured products (first 4)
   const featured = products.slice(0, 4)
-  const newDrops = products.filter(p => p.isNew).slice(0, 3)
+  const newDrops  = products.filter(p => p.isNew).slice(0, 3)
 
   useEffect(() => {
     const t = setInterval(() => {
-      setAnimating(true)
-      setTimeout(() => {
-        setSlide(s => (s + 1) % SLIDES.length)
-        setAnimating(false)
-      }, 400)
-    }, 5000)
+      setFading(true)
+      setTimeout(() => { setSlide(s => (s + 1) % SLIDES.length); setFading(false) }, 350)
+    }, 6000)
     return () => clearInterval(t)
   }, [])
 
-  const current = SLIDES[slide]
+  const s = SLIDES[slide]
 
   return (
     <main className="home">
-      {/* Hero */}
+
+      {/* ── HERO ── */}
       <section className="hero">
-        <div className="hero-noise"></div>
-        <div className={`hero-content ${animating ? 'fade-out' : 'fade-in'}`}>
-          <span className="hero-tag" style={{ color: current.accent }}>
-            ★ {current.tag}
-          </span>
-          <h1 className="hero-headline">
-            <span>{current.headline[0]}</span>
-            <span className="hero-outline" style={{ WebkitTextStrokeColor: current.accent }}>
-              {current.headline[1]}
-            </span>
+        <div className="hero-img-wrap">
+          <img src={s.img} alt="Hero" className="hero-img" loading="eager" />
+          <div className="hero-img-overlay" />
+        </div>
+
+        <div className={`hero-content container ${fading ? 'fade-out' : 'fade-in'}`}>
+          <span className="hero-tag tag">{s.tag}</span>
+          <h1 className="hero-hl">
+            {s.headline.map((line, i) => <span key={i}>{line}</span>)}
           </h1>
-          <p className="hero-sub">{current.sub}</p>
+          <p className="hero-sub">{s.sub}</p>
           <div className="hero-ctas">
-            <Link to={current.ctaLink} className="btn-primary" style={{ background: current.accent, color: '#0a0a0a' }}>
-              {current.cta}
-            </Link>
-            <Link to="/about" className="btn-ghost">Our Story →</Link>
+            <Link to={s.ctaLink} className="btn-primary">{s.cta} →</Link>
+            <Link to={s.cta2Link} className="btn-outline">{s.cta2}</Link>
           </div>
         </div>
 
-        {/* Slide indicators */}
+        {/* Slide dots */}
         <div className="hero-dots">
           {SLIDES.map((_, i) => (
-            <button
-              key={i}
-              className={`hero-dot ${i === slide ? 'active' : ''}`}
-              onClick={() => setSlide(i)}
-              style={i === slide ? { background: current.accent } : {}}
-            />
+            <button key={i} className={`hero-dot ${i === slide ? 'active' : ''}`} onClick={() => setSlide(i)} />
           ))}
         </div>
 
-        {/* Scrolling side text */}
-        <div className="hero-side-text">
-          <span>GEN Z CLOTHING ✦ DESI DRIP ✦ MADE IN INDIA ✦ GEN Z CLOTHING ✦ DESI DRIP ✦</span>
+        {/* Scroll hint */}
+        <div className="hero-scroll">
+          <span className="tag">Scroll</span>
+          <div className="scroll-line" />
         </div>
       </section>
 
-      {/* Category tiles */}
-      <section className="categories container">
-        <div className="section-header">
-          <span className="tag">// SHOP BY</span>
-          <h2>Pick your vibe</h2>
+      {/* ── TICKER STRIP ── */}
+      <div className="strip">
+        <div className="strip-inner">
+          {['Premium Cotton', 'Desi Drip', 'Limited Drops', 'Free Shipping ₹999+', 'Gen Z Only', 'Mil Jayega', 'COD Available', 'Made In India'].map((t, i) => (
+            <span key={i}>{t} <span className="strip-star">★</span></span>
+          ))}
+          {['Premium Cotton', 'Desi Drip', 'Limited Drops', 'Free Shipping ₹999+', 'Gen Z Only', 'Mil Jayega', 'COD Available', 'Made In India'].map((t, i) => (
+            <span key={`b${i}`}>{t} <span className="strip-star">★</span></span>
+          ))}
+        </div>
+      </div>
+
+      {/* ── CATEGORIES ── */}
+      <section className="section container">
+        <div className="section-hd">
+          <span className="tag">// Shop By</span>
+          <h2>Pick Your Vibe</h2>
         </div>
         <div className="cat-grid">
-          <Link to="/shop?cat=tshirts" className="cat-tile cat-tshirt">
-            <div className="cat-tile-inner">
-              <span className="cat-label">T-SHIRTS</span>
-              <span className="cat-count">{products.filter(p => p.category === 'tshirts').length} STYLES</span>
-              <div className="cat-arrow">→</div>
+          <Link to="/shop?cat=tshirts" className="cat-tile">
+            <img src={IMAGES.categories.tshirts} alt="T-Shirts" loading="lazy" />
+            <div className="cat-overlay">
+              <span className="cat-name">T-Shirts</span>
+              <span className="cat-count">{products.filter(p => p.category === 'tshirts').length} styles</span>
+              <span className="cat-arrow">→</span>
             </div>
-            <div className="cat-bg-text">TEE</div>
           </Link>
-          <Link to="/shop?cat=lowers" className="cat-tile cat-lower">
-            <div className="cat-tile-inner">
-              <span className="cat-label">LOWERS</span>
-              <span className="cat-count">{products.filter(p => p.category === 'lowers').length} STYLES</span>
-              <div className="cat-arrow">→</div>
+          <Link to="/shop?cat=lowers" className="cat-tile">
+            <img src={IMAGES.categories.lowers} alt="Lowers" loading="lazy" />
+            <div className="cat-overlay">
+              <span className="cat-name">Lowers</span>
+              <span className="cat-count">{products.filter(p => p.category === 'lowers').length} styles</span>
+              <span className="cat-arrow">→</span>
             </div>
-            <div className="cat-bg-text">FIT</div>
+          </Link>
+          <Link to="/customize" className="cat-tile cat-tile-accent">
+            <div className="cat-custom-inner">
+              <div className="cat-custom-icon">✦</div>
+              <span className="cat-name">Design Your Tee</span>
+              <span className="cat-count">Customize from scratch</span>
+              <span className="cat-arrow cat-arrow-dark">→</span>
+            </div>
           </Link>
         </div>
       </section>
 
-      {/* New drops */}
+      {/* ── NEW DROPS ── */}
       {newDrops.length > 0 && (
         <section className="section container">
-          <div className="section-header">
-            <span className="tag">// JUST DROPPED</span>
-            <h2>Fresh off the press</h2>
+          <div className="section-hd">
+            <span className="tag">// Just Dropped</span>
+            <h2>Fresh Off The Press</h2>
             <Link to="/shop" className="section-link">View all →</Link>
           </div>
-          <div className="products-grid products-grid-3">
-            {newDrops.map(p => (
-              <ProductCard key={p.id} product={p} onAddToCart={onAddToCart} />
-            ))}
+          <div className="pg-3">
+            {newDrops.map(p => <ProductCard key={p.id} product={p} onAddToCart={onAddToCart} />)}
           </div>
         </section>
       )}
 
-      {/* Brand strip */}
-      <section className="brand-strip">
-        <div className="brand-strip-inner">
-          {['OVERSIZED FITS', 'DESI DRIP', 'LIMITED DROPS', 'FREE SHIPPING ₹999+', 'GEN Z ONLY', 'MIL JAYEGA'].map((t, i) => (
-            <span key={i}>{t} <span className="strip-dot">★</span></span>
-          ))}
-        </div>
-      </section>
-
-      {/* Featured products */}
-      <section className="section container">
-        <div className="section-header">
-          <span className="tag">// BESTSELLERS</span>
-          <h2>Everyone's copping</h2>
-          <Link to="/shop" className="section-link">View all →</Link>
-        </div>
-        <div className="products-grid">
-          {featured.map(p => (
-            <ProductCard key={p.id} product={p} onAddToCart={onAddToCart} />
-          ))}
-        </div>
-      </section>
-
-      {/* About teaser */}
-      <section className="about-teaser container">
-        <div className="about-teaser-inner">
-          <div className="about-teaser-text">
-            <span className="tag">// WHO ARE WE</span>
-            <h2>Born from chaos,<br />dressed for the streets.</h2>
-            <p>Mil Jayega isn't just a brand. It's a feeling. The feeling when the fit hits and you know you're locked in. We make clothes for the ones who don't care about trends — they set them.</p>
-            <Link to="/about" className="btn-ghost">Read our story →</Link>
+      {/* ── BESTSELLERS ── */}
+      <section className="section section-alt">
+        <div className="container">
+          <div className="section-hd">
+            <span className="tag">// Bestsellers</span>
+            <h2>Everyone's Copping</h2>
+            <Link to="/shop" className="section-link">View all →</Link>
           </div>
-          <div className="about-teaser-stat-grid">
+          <div className="pg-4">
+            {featured.map(p => <ProductCard key={p.id} product={p} onAddToCart={onAddToCart} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CUSTOMIZE BANNER ── */}
+      <section className="section container">
+        <div className="custom-banner">
+          <div className="custom-banner-text">
+            <span className="tag">// New Feature</span>
+            <h2>Design Your Own Tee</h2>
+            <p>Pick your color, add your text, choose your graphic. Your tee, your rules — we'll print and ship it.</p>
+            <Link to="/customize" className="btn-primary">Start Designing →</Link>
+          </div>
+          <div className="custom-banner-preview">
+            <div className="tee-mockup">
+              <div className="tee-shape">
+                <div className="tee-text-preview">YOUR<br/>DESIGN<br/>HERE</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── ABOUT TEASER ── */}
+      <section className="section container">
+        <div className="about-strip">
+          <div className="about-strip-text">
+            <span className="tag">// Who Are We</span>
+            <h2>Born From Chaos,<br/>Dressed For Streets.</h2>
+            <p>Mil Jayega isn't just a brand. It's a feeling — when the fit hits and you know you're locked in. We make clothes for the ones who don't follow trends. They set them.</p>
+            <Link to="/about" className="btn-outline">Our Story →</Link>
+          </div>
+          <div className="about-strip-stats">
             {[
               { num: '10K+', label: 'Happy Customers' },
-              { num: '50+', label: 'Unique Designs' },
+              { num: '50+',  label: 'Unique Designs' },
               { num: '100%', label: 'Indian Made' },
-              { num: '0%', label: 'F*cks Given' },
-            ].map((s, i) => (
-              <div key={i} className="stat-box">
-                <div className="stat-num">{s.num}</div>
-                <div className="stat-label">{s.label}</div>
+              { num: '0%',   label: 'F*cks Given' },
+            ].map(s => (
+              <div key={s.num} className="stat-card">
+                <div className="stat-n">{s.num}</div>
+                <div className="stat-l">{s.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
     </main>
   )
 }
