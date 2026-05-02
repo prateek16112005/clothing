@@ -16,14 +16,15 @@ export const IMAGES = {
 
   // Category tiles
   categories: {
-    tshirts: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=85',
+    tshirts: '/images/home page.jpg',
     lowers:  'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&q=85',
   },
 
   // Products — T-Shirts
   tshirts: {
-    chaos_front: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=85',
-    chaos_back:  'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&q=85',
+    chaos_back: '/images/home page.jpg',
+    chaos_front:  '/images/prod_1 front.jpg',
+    chaos_more : '/images/prod_1 more.jpg',
     og_front:    'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&q=85',
     og_back:     'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600&q=85',
     acid_front:  'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&q=85',
@@ -34,13 +35,7 @@ export const IMAGES = {
   },
 
   // Products — Lowers
-  lowers: {
-    cargo_front:  'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=85',
-    cargo_back:   'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=600&q=85',
-    track_front:  'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=600&q=85',
-    jogger_front: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=85',
-    shorts_front: 'https://images.unsplash.com/photo-1591195853828-11db59a44f43?w=600&q=85',
-  },
+  
 
   // About
   about: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85',

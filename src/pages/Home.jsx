@@ -7,25 +7,16 @@ import './Home.css'
 
 const SLIDES = [
   {
-    tag: "SS'25 Collection",
+    tag: "SS'26 Collection",
     headline: ["THE FIT", "IS HERE."],
     sub: "Premium streetwear, desi roots. Mil jayega — always.",
     cta: "Shop Now",
     ctaLink: "/shop",
-    cta2: "Customize Your Tee",
-    cta2Link: "/customize",
+    
+    
     img: IMAGES.hero.slide1,
   },
-  {
-    tag: "Cargo Drop",
-    headline: ["CARGO", "SEASON."],
-    sub: "Six pockets. Zero regrets. New lowers just dropped.",
-    cta: "Shop Lowers",
-    ctaLink: "/shop?cat=lowers",
-    cta2: "See All Drops",
-    cta2Link: "/shop",
-    img: IMAGES.hero.slide2,
-  },
+  
 ]
 
 export default function Home({ onAddToCart }) {
@@ -96,8 +87,8 @@ export default function Home({ onAddToCart }) {
       {/* ── CATEGORIES ── */}
       <section className="section container">
         <div className="section-hd">
-          <span className="tag">// Shop By</span>
-          <h2>Pick Your Vibe</h2>
+          <span className="tag">// Shop By </span>
+          <h2 style={{ marginTop: '20px' }}>Pick Your Vibe</h2>
         </div>
         <div className="cat-grid">
           <Link to="/shop?cat=tshirts" className="cat-tile">
@@ -108,11 +99,12 @@ export default function Home({ onAddToCart }) {
               <span className="cat-arrow">→</span>
             </div>
           </Link>
-          <Link to="/shop?cat=lowers" className="cat-tile">
-            <img src={IMAGES.categories.lowers} alt="Lowers" loading="lazy" />
+          
+          <Link to="/shop?cat=sweatshirts" className="cat-tile">
+            <img src={IMAGES.categories.tshirts} alt="Sweatshirts" loading="lazy" />
             <div className="cat-overlay">
-              <span className="cat-name">Lowers</span>
-              <span className="cat-count">{products.filter(p => p.category === 'lowers').length} styles</span>
+              <span className="cat-name">Sweatshirts</span>
+              <span className="cat-count">{products.filter(p => p.category === "sweatshirts").length} styles</span>
               <span className="cat-arrow">→</span>
             </div>
           </Link>

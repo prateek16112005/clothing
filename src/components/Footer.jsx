@@ -55,7 +55,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom container">
-        <span>© 2025 Mil Jayega. All rights reserved.</span>
+        <span>© 2025 MiJayegal . All rights reserved.</span>
         <span className="footer-made">MADE WITH ♥ IN INDIA</span>
       </div>
     </footer>

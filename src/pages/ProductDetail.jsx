@@ -8,8 +8,9 @@ export default function ProductDetail({ onAddToCart }) {
   const { id } = useParams()
   const product = products.find(p => p.id === Number(id))
   const [selectedSize, setSelectedSize] = useState(null)
-  const [showBack, setShowBack] = useState(false)
+  const [activeImg, setActiveImg] = useState(0)
   const [added, setAdded] = useState(false)
+  const allImages = [product.image, product.imageBack, product.imagemore, product.imageFlat].filter(Boolean)
 
   if (!product) {
     return (
@@ -46,18 +47,27 @@ export default function ProductDetail({ onAddToCart }) {
         <div className="pd-main">
           {/* Images */}
           <div className="pd-images">
-            <div className="pd-main-image" onClick={() => setShowBack(b => !b)}>
-              <img
-                src={showBack ? product.imageBack : product.image}
-                alt={product.name}
-                loading="eager"
-              />
-              <button className="pd-toggle-btn">
-                {showBack ? '← Front' : 'Back →'}
-              </button>
-              {product.tag && <span className="pd-tag">{product.tag}</span>}
-            </div>
-          </div>
+  <div className="pd-main-image">
+    <img
+      src={allImages[activeImg]}
+      alt={product.name}
+      loading="eager"
+    />
+    {product.tag && <span className="pd-tag">{product.tag}</span>}
+  </div>
+
+  <div className="pd-thumbs">
+    {allImages.map((img, i) => (
+      <img
+        key={i}
+        src={img}
+        alt={`View ${i + 1}`}
+        className={`pd-thumb ${activeImg === i ? 'active' : ''}`}
+        onClick={() => setActiveImg(i)}
+      />
+    ))}
+  </div>
+</div>
 
           {/* Info */}
           <div className="pd-info">

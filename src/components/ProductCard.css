@@ -171,3 +171,10 @@
   .card-cta { font-size: 9px; padding: 9px; }
   .card-hover-overlay { display: none; }
 }
+
+/* Stock out state */
+.product-card.stock-out .card-image { filter: grayscale(0.6); opacity: 0.75; }
+.stock-out-badge { background: #333 !important; color: #888 !important; }
+.price-muted { color: #555 !important; }
+
+/* Badge color overrides already applied inline via style= */

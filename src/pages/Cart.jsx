@@ -1,11 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 import './Cart.css'
 
+const FIRST_ORDER_DISCOUNT = 0.10   // 10%
+const FIRST_ORDER_CODE     = 'WELCOME10'
+
 export default function Cart({ cart, onRemove, onUpdateQty }) {
+  const { user } = useAuth()
+
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0)
   const shipping  = subtotal >= 999 ? 0 : 99
-  const total     = subtotal + shipping
+
+  // First purchase discount
+  const isFirstOrder       = user?.isFirstPurchase
+  const discountAmount     = isFirstOrder ? Math.round(subtotal * FIRST_ORDER_DISCOUNT) : 0
+  const total              = subtotal + shipping - discountAmount
 
   if (cart.length === 0) {
     return (
@@ -29,6 +39,21 @@ export default function Cart({ cart, onRemove, onUpdateQty }) {
           <span className="tag">// Your Bag</span>
           <h1 className="cart-title">Your Bag ({cart.reduce((s, i) => s + i.qty, 0)})</h1>
         </div>
+
+        {/* First order offer banner */}
+        {!user && (
+          <div className="cart-offer-banner">
+            <span>🎁</span>
+            <span><strong>Login or sign up</strong> to get <strong>10% off</strong> your first order.</span>
+            <Link to="/login" state={{ from: '/cart' }} className="cart-offer-btn">Login →</Link>
+          </div>
+        )}
+        {isFirstOrder && (
+          <div className="cart-offer-banner cart-offer-active">
+            <span>✓</span>
+            <span>First order discount <strong>{FIRST_ORDER_CODE}</strong> applied — you save <strong>₹{discountAmount}</strong>!</span>
+          </div>
+        )}
 
         <div className="cart-layout">
           <div className="cart-items">
@@ -72,6 +97,12 @@ export default function Cart({ cart, onRemove, onUpdateQty }) {
               </div>
               {shipping > 0 && (
                 <p className="shipping-hint">Add ₹{999 - subtotal} more for free shipping</p>
+              )}
+              {isFirstOrder && (
+                <div className="summary-row summary-discount">
+                  <span>First Order ({FIRST_ORDER_CODE})</span>
+                  <span className="discount-val">−₹{discountAmount}</span>
+                </div>
               )}
               <div className="summary-row summary-total">
                 <span>Total</span>

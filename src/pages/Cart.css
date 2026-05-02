@@ -99,3 +99,36 @@
   .cart-item-name { font-size: 16px; }
   .checkout-btn { position: sticky; bottom: 0; border-radius: 0; }
 }
+
+/* First order offer */
+.cart-offer-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(200,255,0,0.06);
+  border: 1px solid rgba(200,255,0,0.2);
+  border-radius: 4px;
+  padding: 14px 18px;
+  margin-bottom: 28px;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+.cart-offer-banner strong { color: #f0ece4; }
+.cart-offer-active { background: rgba(200,255,0,0.1); border-color: rgba(200,255,0,0.4); }
+.cart-offer-btn {
+  margin-left: auto;
+  background: #c8ff00;
+  color: #0d0d0d;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+/* Discount row */
+.summary-discount { color: #c8ff00; }
+.discount-val { color: #c8ff00; font-weight: 700; }

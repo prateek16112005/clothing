@@ -28,7 +28,7 @@ export default function Shop({ onAddToCart }) {
   if (sort === 'price-desc') filtered = [...filtered].sort((a, b) => b.price - a.price)
   if (sort === 'new')        filtered = [...filtered].sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0))
 
-  const catLabel = activeCat === 'all' ? 'All Drops' : activeCat === 'tshirts' ? 'T-Shirts' : 'Lowers'
+  const catLabel = activeCat === 'all' ? 'All Drops' : activeCat === 'tshirts' ? 'T-Shirts' : activeCat === 'sweatshirts' ? 'Sweatshirts' : 'Collection'
 
   return (
     <main className="shop">

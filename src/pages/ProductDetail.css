@@ -166,3 +166,24 @@
   .pd-add-btn { position: sticky; bottom: 0; z-index: 10; border-radius: 0; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); }
   .pd-name { font-size: 36px; }
 }
+
+.pd-thumbs {
+  display: flex;
+  gap: 8px;
+}
+.pd-thumb {
+  width: 72px;
+  height: 86px;
+  object-fit: cover;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+.pd-thumb:hover {
+  border-color: var(--black);
+}
+.pd-thumb.active {
+  border-color: var(--black);
+  box-shadow: 0 0 0 1px var(--black);
+}

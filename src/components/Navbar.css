@@ -171,3 +171,42 @@
   .nav-logo { font-size: 24px; }
   .mobile-menu ul li a { font-size: 40px; }
 }
+
+/* Auth nav additions */
+.nav-login-btn {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c8ff00;
+  text-decoration: none;
+  border: 1px solid rgba(200,255,0,0.4);
+  padding: 6px 14px;
+  border-radius: 2px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-login-btn:hover { background: #c8ff00; color: #0d0d0d; }
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-user-name {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: #888;
+  text-transform: uppercase;
+}
+.nav-logout {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: inherit;
+  transition: color 0.2s;
+}
+.nav-logout:hover { color: #f0ece4; }

@@ -7,20 +7,17 @@ import Shop from './pages/Shop'
 import ProductDetail from './pages/ProductDetail'
 import Cart from './pages/Cart'
 import About from './pages/About'
-import Customize from './pages/Customize'
+import Auth from './pages/Auth'
+import { AuthProvider } from './contexts/AuthContext'
 
 export default function App() {
   const [cart, setCart] = useState([])
   const cursorRef = useRef(null)
 
-  // Custom cursor
   useEffect(() => {
     const cursor = cursorRef.current
     if (!cursor) return
-    const move = (e) => {
-      cursor.style.left = e.clientX + 'px'
-      cursor.style.top  = e.clientY + 'px'
-    }
+    const move = (e) => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px' }
     const enter = () => cursor.classList.add('hovering')
     const leave = () => cursor.classList.remove('hovering')
     window.addEventListener('mousemove', move)
@@ -36,7 +33,6 @@ export default function App() {
     return () => { window.removeEventListener('mousemove', move); obs.disconnect() }
   }, [])
 
-  // Cart handlers
   const addToCart = (product, size) => {
     setCart(prev => {
       const exists = prev.find(i => i.id === product.id && i.size === size)
@@ -55,18 +51,19 @@ export default function App() {
   const cartCount = cart.reduce((sum, i) => sum + i.qty, 0)
 
   return (
-    <>
+    <AuthProvider>
       <div className="cursor" ref={cursorRef}></div>
       <Navbar cartCount={cartCount} />
       <Routes>
-        <Route path="/"           element={<Home onAddToCart={addToCart} />} />
-        <Route path="/shop"       element={<Shop onAddToCart={addToCart} />} />
+        <Route path="/"            element={<Home onAddToCart={addToCart} />} />
+        <Route path="/shop"        element={<Shop onAddToCart={addToCart} />} />
         <Route path="/product/:id" element={<ProductDetail onAddToCart={addToCart} />} />
-        <Route path="/cart"       element={<Cart cart={cart} onRemove={removeFromCart} onUpdateQty={updateQty} />} />
-        <Route path="/about"      element={<About />} />
-        <Route path="/customize"  element={<Customize onAddToCart={addToCart} />} />
+        <Route path="/cart"        element={<Cart cart={cart} onRemove={removeFromCart} onUpdateQty={updateQty} />} />
+        <Route path="/about"       element={<About />} />
+        <Route path="/login"       element={<Auth />} />
+        <Route path="/signup"      element={<Auth />} />
       </Routes>
       <Footer />
-    </>
+    </AuthProvider>
   )
 }
